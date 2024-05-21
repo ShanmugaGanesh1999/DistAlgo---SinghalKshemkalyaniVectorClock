@@ -1,0 +1,23 @@
+There are 4 classes in the system. The main class is 'SinghalKshemkalyaniDistributedSystem.java', where the algorithm execution begins.
+
+Classes:
+1. Message:
+   - This is a POJO class representing the structure of a message (pid, timestamp).
+
+2. MatrixClock:
+   - This class is a POJO of a Singhal Kshemkalyani Matrix Clock, containing an n x 3 matrix that changes in every received event, state change, and method relevant to the clock.
+
+3. Process:
+   - This class is the POJO of a process and it has methods to send and receive messages in a distributed environment.
+
+4. SinghalKshemkalyaniDistributedSystem:
+   - This class uses all the supporting classes and their methods to perform the distributed algorithm using Singhal Kshemkalyani Matrix Classes.
+
+Execution of the algorithm:
+1. The algorithm starts with default parameters of the number of processes, the maximum bound of the process, and the initial process.
+2. We initialize the process bound, which is a mechanism that sets a maximum cap for each process in the distribution system. Using this upper bound, each process will eventually execute.
+3. Initially, the initiator (process zero) is executed.
+4. After the initiator, the followers are executed. Each process chosen as a follower is selected randomly and checked if it has reached its maximum bound and if the last executed process is restricted. If not, the followers are terminated.
+5. In the execute method, a random process is chosen to receive the message, then the message is sent from the random sender.
+6. The send message method constructs the messages to be sent, and sending only the messages that have not been sent before to the receiving process, and updates the sender's last sent column.
+7. The receive message method gets every message from its channel and updates the matrix clock, then prints the updated matrix clock.
